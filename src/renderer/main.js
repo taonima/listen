@@ -5,6 +5,9 @@ import App from './App'
 import router from './router'
 import store from './store'
 import './assets/scss/base.scss'
+import Icon from './components/Icon.vue'
+
+Vue.component('Icon', Icon)
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.http = Vue.prototype.$http = axios

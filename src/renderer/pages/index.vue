@@ -1,15 +1,18 @@
 <template>
   <div id="listen">
     <div class="layout_head">
+      <Icon :name="logo" :width="30" :height="30"/>
     </div>
   </div>
 </template>
 
 <script>
+  import logo from '@/assets/icon/logo.svg'
   export default {
     name: 'index',
     data: () => {
       return {
+        logo
       }
     },
     created: () => {
