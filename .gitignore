@@ -1,7 +1,10 @@
 .DS_Store
+.idea
 dist/electron/*
 dist/web/*
 build/*
+yarn.lock
+dist/
 !build/icons
 coverage
 node_modules/
