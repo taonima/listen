@@ -1,6 +1,6 @@
 <template>
   <div class="icon" :style="`width: ${width}px;height: ${height}px`">
-    <embed :src="name" width="100%" height="100%"/>
+    <embed :src="icon" width="100%" height="100%"/>
   </div>
 </template>
 
@@ -17,13 +17,17 @@
       height: {
         required: true
       }
+    },
+    computed: {
+      icon: function () {
+        return require(`@/assets/icon/${this.name}.svg`);
+      }
     }
-  }
+  };
 </script>
 
 <style scoped>
   .icon {
-    background-color: white;
     display: inline-block;
   }
 </style>

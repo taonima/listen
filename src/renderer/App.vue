@@ -7,7 +7,7 @@
 <script>
   export default {
     name: 'listen'
-  }
+  };
 </script>
 
 <style lang="scss">

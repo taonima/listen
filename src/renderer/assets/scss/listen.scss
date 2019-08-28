@@ -1,0 +1,32 @@
+#listen {
+  .layout_head {
+    height: 50px;
+    background: #C62F2F;
+    -webkit-app-region: drag;
+    display: flex;
+    align-items: center;
+    span {
+      color: white;
+      vertical-align: middle;
+    }
+    .logo {
+      .icon {
+        vertical-align: middle;
+      }
+    }
+  }
+  .layout_body {
+    width: 100%;
+    height: 570px;
+    >div {
+      height: 100%;
+      overflow: auto;
+      display: inline-block;
+    }
+  }
+  .layout_foot {
+    width: 100%;
+    height: 49px;
+    border-top: 1px solid #E1E1E2;
+  }
+}
