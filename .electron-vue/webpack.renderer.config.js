@@ -11,6 +11,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
+function resolve (dir) {
+  console.log(path.join(__dirname, dir));
+  return path.join(__dirname, dir)
+}
 
 /**
  * List of node_modules to include in webpack bundle
@@ -87,6 +91,7 @@ let rendererConfig = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        exclude: resolve('../src/renderer/assets/icon'),
         use: {
           loader: 'url-loader',
           query: {
@@ -112,7 +117,17 @@ let rendererConfig = {
             name: 'fonts/[name]--[folder].[ext]'
           }
         }
-      }
+      },
+      {
+        test: /\.svg$/,
+        include: resolve('../src/renderer/assets/icon'),
+        use: {
+          loader: 'svg-sprite-loader',
+          options: {
+            symbolId: 'icon-[name]'
+          }
+        },
+      },
     ]
   },
   node: {

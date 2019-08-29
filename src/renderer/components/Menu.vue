@@ -2,7 +2,8 @@
   <div class="menu">
     <div class="title">{{title}}</div>
     <div v-for="item in menus" :class="className(item.code)" v-on:click="menuClick(item.code)">
-      <Icon :name="item.icon" :width="20" :height="20"/><span>{{item.name}}</span>
+      <!--<Icon :name="iconName(item.code, item.icon)" :width="20" :height="20"/><span>{{item.name}}</span>-->
+      <IconSvg :iconClass="item.icon"/><span>{{item.name}}</span>
     </div>
   </div>
 </template>
@@ -39,6 +40,13 @@
           return 'menu_item_active';
         }
         return 'menu_item';
+      },
+      iconName: function (code, name) {
+        console.log(code, this.menuCode);
+        if (code === this.menuCode) {
+          return `${name}_active`;
+        }
+        return name;
       }
     }
   };
