@@ -3,17 +3,36 @@
     height: 50px;
     background: #C62F2F;
     -webkit-app-region: drag;
+    line-height: 50px;
     display: flex;
     align-items: center;
     span {
       color: white;
-      vertical-align: middle;
     }
     .logo {
       margin-left: 20px;
+      width: 200px;
       .icon {
         vertical-align: middle;
       }
+    }
+    .among {
+      span {
+        color: #C77373;
+      }
+      .input_search {
+        background-color: #A82828;
+        color: white;
+        caret-color: white;
+        &::-webkit-input-placeholder {
+          color: #C77373;
+        }
+      }
+    }
+    .right {
+      display: inline-flex;
+      position: absolute;
+      right: 0;
     }
   }
   .layout_body {

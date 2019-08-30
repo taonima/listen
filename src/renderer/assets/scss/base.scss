@@ -12,10 +12,20 @@ html, body, #root {
 body {
   font-family: "Microsoft YaHei UI";
   font-size: 14px;
+  letter-spacing: 0.5px;
 }
 
 a {
   text-decoration:none;
+}
+
+button, input {
+  -webkit-app-region: no-drag;
+}
+
+input {
+  border: none;
+  outline:medium;
 }
 
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/

@@ -6,6 +6,17 @@
           <span>听</span>
         </Icon>
       </div>
+      <div class="among">
+        <Search placeholder="搜索音乐" @onSearch="handleSearch"/>
+      </div>
+      <div class="right">
+        <div class="user">
+          <span>登录</span>
+        </div>
+        <div class="app_operate">
+          <span>关闭</span>
+        </div>
+      </div>
     </div>
     <div class="layout_body">
       <div class="left">
@@ -44,6 +55,11 @@
       };
     },
     created: () => {
+    },
+    methods: {
+      handleSearch: function (v) {
+        console.log(v);
+      }
     }
   };
 </script>
