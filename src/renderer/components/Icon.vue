@@ -1,33 +1,55 @@
 <template>
-  <div class="icon" :style="`width: ${width}px;height: ${height}px`">
-    <embed :src="icon" width="100%" height="100%"/>
-  </div>
+  <span :class="svgClass">
+    <svg class="icon_svg" aria-hidden="true">
+      <use :xlink:href="iconName"/>
+    </svg>
+    <span>
+      <slot></slot>
+    </span>
+  </span>
+
 </template>
 
 <script>
   export default {
     name: 'Icon',
     props: {
-      name: {
+      iconClass: {
+        type: String,
         required: true
       },
-      width: {
-        required: true
-      },
-      height: {
-        required: true
+      className: {
+        type: String,
+        default: ''
       }
     },
     computed: {
-      icon: function () {
-        return require(`@/assets/icon/${this.name}.svg`);
+      iconName() {
+        return `#icon-${this.iconClass}`;
+      },
+      svgClass() {
+        if (this.className) {
+          return 'svg-icon ' + this.className;
+        } else {
+          return 'svg-icon';
+        }
       }
     }
   };
 </script>
 
-<style scoped>
-  .icon {
-    display: inline-block;
+<style scoped lang="scss">
+  .svg-icon {
+    .icon_svg {
+      width: 1.5em;
+      height: 1.5em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+      vertical-align: middle;
+    }
+    span {
+      vertical-align: middle;
+    }
   }
 </style>
