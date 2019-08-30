@@ -2,8 +2,9 @@
   <div id="listen">
     <div class="layout_head">
       <div class="logo">
-        <Icon name="logo" :width="30" :height="30"/>
-        <span>听</span>
+        <Icon iconClass="logo">
+          <span>听</span>
+        </Icon>
       </div>
     </div>
     <div class="layout_body">
@@ -11,7 +12,7 @@
         <Menu title="推荐" :menus="menus"/>
       </div>
       <div class="right">
-
+        <router-view></router-view>
       </div>
     </div>
     <div class="layout_foot">
@@ -25,12 +26,14 @@
     {
       icon: 'note',
       name: '发现音乐',
-      code: 1
+      code: 1,
+      path: '/discover'
     },
     {
       icon: 'fm',
       name: '私人FM',
-      code: 2
+      code: 2,
+      path: '/fm'
     }
   ];
   export default {

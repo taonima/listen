@@ -12,7 +12,17 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: require('@/pages/index').default
+      component: require('@/pages/index').default,
+      children: [
+        {
+          path: 'discover',
+          component: require('@/pages/discover/index').default
+        },
+        {
+          path: 'fm',
+          component: require('@/pages/fm/index').default
+        }
+      ]
     }
   ]
 });

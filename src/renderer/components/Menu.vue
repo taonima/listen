@@ -1,10 +1,11 @@
 <template>
   <div class="menu">
     <div class="title">{{title}}</div>
-    <div v-for="item in menus" :class="className(item.code)" v-on:click="menuClick(item.code)">
-      <!--<Icon :name="iconName(item.code, item.icon)" :width="20" :height="20"/><span>{{item.name}}</span>-->
-      <IconSvg :iconClass="item.icon"/><span>{{item.name}}</span>
-    </div>
+    <router-link v-for="item in menus" :to="item.path">
+      <div :class="className(item.code)" v-on:click="menuClick(item.code)" >
+        <Icon :iconClass="item.icon"><span>{{item.name}}</span></Icon>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -37,16 +38,9 @@
       },
       className: function (code) {
         if (code === this.menuCode) {
-          return 'menu_item_active';
+          return 'menu_item menu_item_active';
         }
         return 'menu_item';
-      },
-      iconName: function (code, name) {
-        console.log(code, this.menuCode);
-        if (code === this.menuCode) {
-          return `${name}_active`;
-        }
-        return name;
       }
     }
   };
@@ -60,26 +54,24 @@
       color: #7D7D7D;
       padding-left: 9px;
       padding-bottom: 9px;
+      font-size: 14px;
     }
     .menu_item {
       cursor: pointer;
       color: #7D7D7D;
-      .icon {
-        vertical-align: middle;
-      }
-      span {
-        vertical-align: middle;
+      height: 30px;
+      line-height: 30px;
+      padding-left: 20px;
+      border-left: 3px solid white;
+      svg {
+        margin-right: 5px;
       }
     }
     .menu_item_active {
       cursor: pointer;
       color: black;
-      .icon {
-        vertical-align: middle;
-      }
-      span {
-        vertical-align: middle;
-      }
+      background-color: #E6E7EA;
+      border-left: 3px solid #C62F2F;
     }
   }
 </style>

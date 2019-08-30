@@ -10,6 +10,7 @@
       vertical-align: middle;
     }
     .logo {
+      margin-left: 20px;
       .icon {
         vertical-align: middle;
       }
@@ -22,6 +23,13 @@
       height: 100%;
       overflow: auto;
       display: inline-block;
+    }
+    .left {
+      width: 200px;
+      background-color: #F5F5F7;
+    }
+    .right {
+      padding: 0 30px;
     }
   }
   .layout_foot {

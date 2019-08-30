@@ -7,11 +7,9 @@ import store from './store';
 import './assets/scss/base.scss';
 import './assets/icon.js';
 import Icon from './components/Icon.vue';
-import IconSvg from './components/IconSvg.vue';
 import Menu from './components/Menu.vue';
 
 Vue.component('Icon', Icon);
-Vue.component('IconSvg', IconSvg);
 Vue.component('Menu', Menu);
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'));
