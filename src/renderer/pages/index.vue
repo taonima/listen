@@ -12,9 +12,12 @@
       <div class="right">
         <div class="user">
           <span>登录</span>
+          <Icon iconClass="set"/>
         </div>
+        <Icon iconClass="divider" className="divider"/>
         <div class="app_operate">
-          <span>关闭</span>
+          <Icon iconClass="minimize" @onClick="handleMinimize"/>
+          <Icon iconClass="x"/>
         </div>
       </div>
     </div>
@@ -33,6 +36,7 @@
 </template>
 
 <script>
+  import { remote } from 'electron';
   const menus = [
     {
       icon: 'note',
@@ -55,15 +59,25 @@
       };
     },
     created: () => {
+      console.log(remote);
     },
     methods: {
       handleSearch: function (v) {
         console.log(v);
+      },
+      handleMinimize: function () {
+        console.log('最小化');
+        remote.getCurrentWindow().minimize();
       }
     }
   };
 </script>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+  .divider {
+    .svg-icon {
+      color: #A82828 !important;
+      font-size: 12px !important;
+    }
+  }
 </style>

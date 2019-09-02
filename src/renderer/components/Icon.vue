@@ -1,5 +1,5 @@
 <template>
-  <span :class="svgClass">
+  <span :class="svgClass" @click="onClick">
     <svg class="icon_svg" aria-hidden="true">
       <use :xlink:href="iconName"/>
     </svg>
@@ -34,22 +34,24 @@
           return 'svg-icon';
         }
       }
+    },
+    methods: {
+      onClick: function () {
+        this.$emit('onClick');
+      }
     }
   };
 </script>
 
 <style scoped lang="scss">
   .svg-icon {
+    display: inline-flex;
+    align-items: center;
     .icon_svg {
       width: 1.5em;
       height: 1.5em;
-      vertical-align: -0.15em;
       fill: currentColor;
       overflow: hidden;
-      vertical-align: middle;
-    }
-    span {
-      vertical-align: middle;
     }
   }
 </style>

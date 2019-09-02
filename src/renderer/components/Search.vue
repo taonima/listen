@@ -1,11 +1,11 @@
 <template>
-  <span>
+  <span class="listen_search">
     <Input
       class="input_search"
       :placeholder="placeholder"
       @onChange="onChange"
     />
-    <span @click="onclick">
+    <span @click="onclick" class="btn">
       <Icon iconClass="magnifier"/>
     </span>
   </span>
@@ -34,12 +34,16 @@
 </script>
 
 <style lang="scss" scoped>
-  input {
-    border-radius: 10px;
-  }
-  .svg-icon {
-    position: relative;
-    right: 30px;
-    cursor: pointer;
+  .listen_search {
+    display: inline-flex;
+    align-items: center;
+    input {
+      border-radius: 10px;
+    }
+    .btn {
+      position: relative;
+      right: 30px;
+      cursor: pointer;
+    }
   }
 </style>

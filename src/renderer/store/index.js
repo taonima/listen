@@ -7,7 +7,6 @@ import modules from './modules';
 // import { SET_MENU } from './mutation-types';
 
 Vue.use(Vuex);
-console.log(modules);
 
 export default new Vuex.Store({
   modules,
