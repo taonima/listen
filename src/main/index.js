@@ -1,7 +1,8 @@
 'use strict';
 
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Tray, Menu } from 'electron';
 import '../renderer/store';
+const path = require('path');
 
 /**
  * Set `__static` path to static files in production
@@ -33,10 +34,23 @@ function createWindow () {
     mainWindow = null;
   });
 }
+let tray = null;
+function createTray () {
+  tray = new Tray(path.join(__dirname, '../../build/icons/icon.ico'));
+  tray.setToolTip('听吗');
+  const contextMenu = Menu.buildFromTemplate([
+    { label: '退出', icon: path.join(__dirname, '../../build/icons/exit.png'), role: 'quit' }
+  ]);
+  tray.setContextMenu(contextMenu);
+}
 
-app.on('ready', createWindow);
+app.on('ready', () => {
+  createWindow();
+  createTray();
+});
 
 app.on('window-all-closed', () => {
+  console.log('window-all-closed');
   if (process.platform !== 'darwin') {
     app.quit();
   }
