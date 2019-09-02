@@ -1,4 +1,5 @@
 'use strict';
+/* eslint-disable */
 
 import { app, BrowserWindow, Tray, Menu } from 'electron';
 import '../renderer/store';
@@ -13,6 +14,7 @@ if (process.env.NODE_ENV !== 'development') {
 }
 
 let mainWindow;
+let tray = null;
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`;
@@ -22,10 +24,11 @@ function createWindow () {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    height: 670,
-    width: 1022,
+    height: 680,
+    width: 1032,
     resizable: false,
-    frame: false
+    frame: false,
+    transparent: true
   });
 
   mainWindow.loadURL(winURL);
@@ -34,7 +37,6 @@ function createWindow () {
     mainWindow = null;
   });
 }
-let tray = null;
 function createTray () {
   tray = new Tray(path.join(__dirname, '../../build/icons/icon.ico'));
   tray.setToolTip('听吗');
@@ -42,6 +44,9 @@ function createTray () {
     { label: '退出', icon: path.join(__dirname, '../../build/icons/exit.png'), role: 'quit' }
   ]);
   tray.setContextMenu(contextMenu);
+  tray.on('click', () => {
+    mainWindow.show();
+  });
 }
 
 app.on('ready', () => {

@@ -62,7 +62,7 @@
       height: 30px;
       line-height: 30px;
       padding-left: 20px;
-      border-left: 3px solid white;
+      border-left: 3px solid #F5F5F7;
       svg {
         margin-right: 5px;
       }

@@ -17,7 +17,7 @@
         <Icon iconClass="divider" className="divider"/>
         <div class="app_operate">
           <Icon iconClass="minimize" @onClick="handleMinimize"/>
-          <Icon iconClass="x"/>
+          <Icon iconClass="x" @onClick="handleHide"/>
         </div>
       </div>
     </div>
@@ -66,8 +66,10 @@
         console.log(v);
       },
       handleMinimize: function () {
-        console.log('最小化');
         remote.getCurrentWindow().minimize();
+      },
+      handleHide: function () {
+        remote.getCurrentWindow().hide();
       }
     }
   };

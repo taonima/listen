@@ -9,14 +9,23 @@ html, body, #root {
   height: 100%;
 }
 
+html {
+  padding: 5px;
+}
+
 body {
   font-family: "Microsoft YaHei UI";
   font-size: 14px;
   letter-spacing: 0.5px;
+  box-shadow: 0 0 5px #F5F5F7;
 }
 
 a {
   text-decoration:none;
+}
+
+#app {
+  background-color: white;
 }
 
 button, input, .svg-icon {
