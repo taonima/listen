@@ -23,6 +23,10 @@ export default new Router({
           component: require('@/pages/fm/index').default
         }
       ]
+    },
+    {
+      path: '/login',
+      component: require('@/pages/login/index').default
     }
   ]
 });

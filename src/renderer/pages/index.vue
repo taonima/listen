@@ -11,7 +11,7 @@
       </div>
       <div class="right">
         <div class="user">
-          <span>登录</span>
+          <span @click="openLogin">登录</span>
           <Icon iconClass="set"/>
         </div>
         <Icon iconClass="divider" className="divider"/>
@@ -37,6 +37,9 @@
 
 <script>
   import { remote } from 'electron';
+  import Vue from 'vue';
+  const { BrowserWindow } = remote;
+  let loginWin;
   const menus = [
     {
       icon: 'note',
@@ -58,8 +61,8 @@
         menus
       };
     },
-    created: () => {
-      console.log(remote);
+    created: function() {
+      console.log(Vue.winURL);
     },
     methods: {
       handleSearch: function (v) {
@@ -70,6 +73,21 @@
       },
       handleHide: function () {
         remote.getCurrentWindow().hide();
+      },
+      openLogin: function () {
+        if (!loginWin) {
+          loginWin = new BrowserWindow({
+            width: 350,
+            height: 530,
+            resizable: false,
+            frame: false,
+            parent: remote.getCurrentWindow(),
+            backgroundColor: '#FAFAFA'
+          });
+        }
+        loginWin.webContents.closeDevTools();
+        loginWin.loadURL('http://localhost:9080/#/login');
+        loginWin.show();
       }
     }
   };

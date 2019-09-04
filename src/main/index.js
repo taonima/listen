@@ -32,7 +32,7 @@ function createWindow () {
   });
 
   mainWindow.loadURL(winURL);
-
+  // mainWindow.webContents.closeDevTools();
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
