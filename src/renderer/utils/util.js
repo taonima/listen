@@ -3,7 +3,7 @@ const winURL = process.env.NODE_ENV === 'development'
   : `file://${__dirname}/index.html`;
 
 export default {
-  install: (Vue) => {
+  install: (Vue, options) => {
     Vue.winURL = winURL;
   }
 };

@@ -82,11 +82,12 @@
             resizable: false,
             frame: false,
             parent: remote.getCurrentWindow(),
-            backgroundColor: '#FAFAFA'
+            // backgroundColor: '#FAFAFA',
+            transparent: true
           });
         }
         loginWin.webContents.closeDevTools();
-        loginWin.loadURL('http://localhost:9080/#/login');
+        loginWin.loadURL(`${Vue.winURL}/#/login`);
         loginWin.show();
       }
     }

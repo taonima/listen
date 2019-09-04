@@ -1,5 +1,5 @@
 <template>
-  <div class="menu">
+  <div class="listen_menu">
     <div class="title">{{title}}</div>
     <router-link v-for="item in menus" :to="item.path">
       <div :class="className(item.code)" v-on:click="menuClick(item.code)" >
@@ -47,7 +47,7 @@
 </script>
 
 <style lang="scss">
-  .menu {
+  .listen_menu {
     padding: 9px 0;
     font-size: 12px;
     .title {

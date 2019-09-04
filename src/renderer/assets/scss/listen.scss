@@ -19,12 +19,15 @@
       span {
         color: #C77373;
       }
-      .input_search {
-        background-color: #A82828;
-        color: white;
-        caret-color: white;
-        &::-webkit-input-placeholder {
-          color: #C77373;
+      .listen_search {
+        input {
+          background-color: #A82828;
+          color: white;
+          caret-color: white;
+          border-radius: 10px;
+          &::-webkit-input-placeholder {
+            color: #C77373;
+          }
         }
       }
     }
