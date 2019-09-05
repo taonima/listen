@@ -30,9 +30,9 @@
     },
     computed: {
       input_class: function () {
-        let str = '';
+        let str = 'in';
         if (this.prefix) {
-          str = `prefix_input`;
+          str = `${str} prefix_input`;
         }
         if (this.suffix) {
           str = `${str} suffix_input`;
@@ -56,6 +56,7 @@
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 210px;
     .prefix {
       color: #7D7D7D;
       font-size: 12px;
@@ -69,7 +70,7 @@
     }
     input {
       height: 22px;
-      width: 210px;
+      width: 100%;
       padding-left: 10px;
       &::-webkit-input-placeholder {
         color: #E5E5E5;

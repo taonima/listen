@@ -4,7 +4,6 @@ import Vuex from 'vuex';
 import { createPersistedState, createSharedMutations } from 'vuex-electron';
 
 import modules from './modules';
-// import { SET_MENU } from './mutation-types';
 
 Vue.use(Vuex);
 

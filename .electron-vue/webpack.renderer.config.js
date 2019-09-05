@@ -12,7 +12,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 function resolve (dir) {
-  console.log(path.join(__dirname, dir));
   return path.join(__dirname, dir)
 }
 

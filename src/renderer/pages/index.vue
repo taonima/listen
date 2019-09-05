@@ -11,6 +11,7 @@
       </div>
       <div class="right">
         <div class="user">
+          <span>{{account}}</span>
           <span @click="openLogin">登录</span>
           <Icon iconClass="set"/>
         </div>
@@ -62,7 +63,9 @@
       };
     },
     created: function() {
-      console.log(Vue.winURL);
+    },
+    updated: function() {
+      console.log(this.$store.state.Menu);
     },
     methods: {
       handleSearch: function (v) {
@@ -89,6 +92,10 @@
         loginWin.webContents.closeDevTools();
         loginWin.loadURL(`${Vue.winURL}/#/login`);
         loginWin.show();
+        loginWin.on('closed', () => {
+          this.$forceUpdate();
+          loginWin = null;
+        });
       }
     }
   };

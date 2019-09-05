@@ -10,8 +10,6 @@ const mutations = {
 
 const actions = {
   set_menu ({ commit }, code) {
-    // do something async
-    console.log(code);
     commit('SET_MENU', code);
   }
 };
