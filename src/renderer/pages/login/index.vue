@@ -42,7 +42,7 @@
           password: this.password
         }).then(res => {
           this.error = res;
-          this.$store.dispatch('User/SET_USER', res);
+          this.$store.dispatch('User/set_user', res);
           this.handleClose();
         }, res => {
           this.error = res;

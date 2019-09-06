@@ -12,7 +12,7 @@ export default {
       return {};
     },
     profile: function () {
-      if (utils.empty(this.$store.state.User.profile)) {
+      if (!utils.empty(this.$store.state.User.profile)) {
         return this.$store.state.User.profile;
       }
       return {};

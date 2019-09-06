@@ -1,6 +1,6 @@
 const state = {
   account: {},
-  bindings: {},
+  bindings: [],
   profile: {},
   loginType: ''
 };
@@ -16,7 +16,7 @@ const mutations = {
 };
 
 const actions = {
-  SET_USER ({ commit }, data) {
+  set_user ({ commit }, data) {
     console.log(data);
     commit('SET_USER', data);
   }

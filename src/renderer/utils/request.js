@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { baseUrl } from '@/config';
+import config from '@/config';
 const http = axios.create({
-  baseURL: baseUrl,
+  baseURL: config.baseUrl,
   timeout: 30000,
   withCredentials: true,
   validateStatus(status) {
