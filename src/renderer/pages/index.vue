@@ -11,7 +11,7 @@
       </div>
       <div class="right">
         <div class="user">
-          <span>{{account}}</span>
+          <span>{{profile.nickname}}</span>
           <span @click="openLogin">登录</span>
           <Icon iconClass="set"/>
         </div>
@@ -38,9 +38,9 @@
 
 <script>
   import { remote } from 'electron';
-  import Vue from 'vue';
+  import { winURL } from '@/config';
   const { BrowserWindow } = remote;
-  let loginWin;
+  let loginWin = null;
   const menus = [
     {
       icon: 'note',
@@ -85,12 +85,11 @@
             resizable: false,
             frame: false,
             parent: remote.getCurrentWindow(),
-            // backgroundColor: '#FAFAFA',
             transparent: true
           });
         }
         loginWin.webContents.closeDevTools();
-        loginWin.loadURL(`${Vue.winURL}/#/login`);
+        loginWin.loadURL(`${winURL}/#/login`);
         loginWin.show();
         loginWin.on('closed', () => {
           this.$forceUpdate();

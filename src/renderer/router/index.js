@@ -13,6 +13,7 @@ export default new Router({
       path: '/',
       name: 'home',
       component: require('@/pages/index').default,
+      redirect: '/discover',
       children: [
         {
           path: 'discover',
