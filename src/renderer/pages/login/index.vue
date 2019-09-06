@@ -1,22 +1,27 @@
 <template>
   <div class="login">
-    <div class="head">
-      <Icon iconClass="x" @onClick="handleClose"/>
-    </div>
-    <div class="box">
-      <div class="input">
-        <Input placeholder="请输入手机号" prefix="phone" @onChange="phoneChange"/>
-        <Input placeholder="请输入密码" prefix="password" type="password" @onChange="passwordChange"/>
+    <template v-if="!profile.nickname">
+      <div class="head">
+        <Icon iconClass="x" @onClick="handleClose"/>
       </div>
-      <Button @onClick="handleLogin">登录</Button>
-      <p class="error" v-if="error.code !== 200">{{error.message}}</p>
-    </div>
+      <div class="box">
+        <div class="input">
+          <Input placeholder="请输入手机号" prefix="phone" @onChange="phoneChange"/>
+          <Input placeholder="请输入密码" prefix="password" type="password" @onChange="passwordChange"/>
+        </div>
+        <Button @onClick="handleLogin">登录</Button>
+        <p class="error" v-if="error.code !== 200">{{error.message}}</p>
+      </div>
+    </template>
+    <template v-else>
+      <Button @onClick="handleLogout" class="logout">注销</Button>
+    </template>
   </div>
 </template>
 
 <script>
   import { remote } from 'electron';
-  import { login } from '@/services/listen';
+  import { login, logout } from '@/services/listen';
   export default {
     name: 'login',
     data: function() {
@@ -47,6 +52,11 @@
         }, res => {
           this.error = res;
         });
+      },
+      handleLogout: function () {
+        logout().then(() => {
+          this.$store.dispatch('User/clear_user');
+        }, () => {});
       }
     }
   };
@@ -97,6 +107,14 @@
         text-align: left;
         padding-top: 5px;
       }
+    }
+    .logout {
+      width: 80%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #F5F5F7;
     }
   }
 

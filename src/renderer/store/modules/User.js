@@ -16,9 +16,16 @@ const mutations = {
 };
 
 const actions = {
-  set_user ({ commit }, data) {
-    console.log(data);
+  set_user({ commit }, data) {
     commit('SET_USER', data);
+  },
+  clear_user({ commit }) {
+    commit('SET_USER', {
+      account: {},
+      bindings: [],
+      profile: {},
+      loginType: ''
+    });
   }
 };
 

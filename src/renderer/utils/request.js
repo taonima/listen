@@ -33,6 +33,14 @@ const request = {
       }
       return Promise.reject(res);
     });
+  },
+  get: function (url, para) {
+    return http.get(url, para).then(res => {
+      if (res.code === 200) {
+        return Promise.resolve(res);
+      }
+      return Promise.reject(res);
+    });
   }
 };
 
