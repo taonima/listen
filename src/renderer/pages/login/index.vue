@@ -6,8 +6,8 @@
       </div>
       <div class="box">
         <div class="input">
-          <Input placeholder="请输入手机号" prefix="phone" @onChange="phoneChange"/>
-          <Input placeholder="请输入密码" prefix="password" type="password" @onChange="passwordChange"/>
+          <Input placeholder="请输入手机号" prefix="phone" v-model="phone"/>
+          <Input placeholder="请输入密码" prefix="password" v-model="password"/>
         </div>
         <Button @onClick="handleLogin">登录</Button>
         <p class="error" v-if="error.code !== 200">{{error.message}}</p>
@@ -34,12 +34,6 @@
     methods: {
       handleClose: function () {
         remote.getCurrentWindow().hide();
-      },
-      phoneChange: function (v) {
-        this.phone = v;
-      },
-      passwordChange: function (v) {
-        this.password = v;
       },
       handleLogin: function () {
         login({

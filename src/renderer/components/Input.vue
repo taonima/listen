@@ -3,7 +3,7 @@
     <span v-if="prefix" class="prefix">
       <Icon :iconClass="prefix"/>
     </span>
-    <input :type="type" :placeholder="placeholder" v-model="value" @change="onChange" :class="input_class"/>
+    <input :type="type" :placeholder="placeholder" v-model="value" @input="onChange" :class="input_class"/>
     <span v-if="suffix" class="suffix" @click="suffixClick">
       <Icon :iconClass="suffix"/>
     </span>
@@ -14,19 +14,20 @@
   export default {
     name: 'Input',
     props: {
+      v_value: '',
       placeholder: '',
-      initValue: '',
       type: '',
       prefix: '',
       suffix: ''
+    },
+    model: {
+      prop: 'v_value',
+      event: 'input'
     },
     data: () => {
       return {
         value: ''
       };
-    },
-    created() {
-      this.value = this.initValue;
     },
     computed: {
       input_class: function () {
@@ -42,10 +43,15 @@
     },
     methods: {
       onChange: function (e) {
-        this.$emit('onChange', e.target.value);
+        this.$emit('input', e.target.value);
       },
       suffixClick: function () {
         this.$emit('suffixClick');
+      }
+    },
+    watch: {
+      v_value: function () {
+        this.value = this.v_value;
       }
     }
   };
