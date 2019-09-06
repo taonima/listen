@@ -1,4 +1,5 @@
-import * as utils from '@/utils';
+// import * as utils from '@/utils';
+import { empty } from '@/utils';
 
 export default {
   data: () => {
@@ -6,19 +7,19 @@ export default {
   },
   computed: {
     account: function () {
-      if (utils.empty(this.$store.state.User.account)) {
+      if (empty(this.$store.state.User.account)) {
         return this.$store.state.User.account;
       }
       return {};
     },
     profile: function () {
-      if (!utils.empty(this.$store.state.User.profile)) {
+      if (!empty(this.$store.state.User.profile)) {
         return this.$store.state.User.profile;
       }
       return {};
     },
     bindings: function () {
-      if (utils.empty(this.$store.state.User.bindings)) {
+      if (empty(this.$store.state.User.bindings)) {
         return this.$store.state.User.bindings;
       }
       return {};

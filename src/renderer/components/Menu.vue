@@ -29,9 +29,6 @@
     },
     created() {
     },
-    mounted() {
-      console.log(this.menuCode);
-    },
     methods: {
       menuClick: function (code) {
         this.$store.dispatch('Menu/set_menu', code);

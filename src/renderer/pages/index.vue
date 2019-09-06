@@ -38,7 +38,7 @@
 
 <script>
   import { remote } from 'electron';
-  import config from '@/config';
+  import { winURL } from '@/config';
   const { BrowserWindow } = remote;
   let loginWin = null;
   const menus = [
@@ -89,8 +89,7 @@
           });
         }
         loginWin.webContents.closeDevTools();
-        console.log(config);
-        loginWin.loadURL(`${config.winURL}/#/login`);
+        loginWin.loadURL(`${winURL}/#/login`);
         loginWin.show();
         loginWin.on('closed', () => {
           this.$forceUpdate();
