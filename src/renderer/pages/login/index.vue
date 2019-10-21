@@ -21,7 +21,7 @@
 
 <script>
   import { remote } from 'electron';
-  import { login, logout } from '@/services/listen';
+  import { login, logout } from '@/services';
   export default {
     name: 'login',
     data: function() {

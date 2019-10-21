@@ -11,7 +11,7 @@
       </div>
       <div class="right">
         <div class="user">
-          <span v-if="profile.nickname" @click="openLogin">{{profile.nickname}}</span>
+          <span v-if="user_status" @click="openLogin">{{profile.nickname}}</span>
           <span v-else @click="openLogin">登录</span>
           <Icon iconClass="set"/>
         </div>

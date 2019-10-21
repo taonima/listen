@@ -35,7 +35,7 @@ const request = {
     });
   },
   get: function (url, para) {
-    return http.get(url, para).then(res => {
+    return http.get(url, {params: para}).then(res => {
       if (res.code === 200) {
         return Promise.resolve(res);
       }

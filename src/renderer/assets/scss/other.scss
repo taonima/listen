@@ -1,0 +1,13 @@
+.other_label {
+  font-size: 18px;
+  border-bottom: 1px solid #E1E1E2;
+  padding-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  .action {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    color: #7D7D7D;
+  }
+}

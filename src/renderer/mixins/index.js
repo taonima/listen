@@ -23,6 +23,9 @@ export default {
         return this.$store.state.User.bindings;
       }
       return {};
+    },
+    user_status: function () {
+      return !empty(this.profile);
     }
   }
 };
