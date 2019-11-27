@@ -1,9 +1,9 @@
 <template>
   <div class="login">
+    <div class="head">
+      <Icon iconClass="x" @onClick="handleClose"/>
+    </div>
     <template v-if="!profile.nickname">
-      <div class="head">
-        <Icon iconClass="x" @onClick="handleClose"/>
-      </div>
       <div class="box">
         <div class="input">
           <Input placeholder="请输入手机号" prefix="phone" v-model="phone"/>

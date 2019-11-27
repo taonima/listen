@@ -20,6 +20,10 @@
         type: Array
       }
     },
+    model: {
+      prop: 'activeKey',
+      event: 'change'
+    },
     data: function () {
       return {
         key: 1
@@ -28,6 +32,7 @@
     methods: {
       tabChange: function (key) {
         this.key = key;
+        this.$emit('change', key);
       },
       label_class: function (key) {
         if (key === this.key) {
