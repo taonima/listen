@@ -1,12 +1,26 @@
 <template>
   <span>
-    <div class="playlist_type">
-      <span>歌单类型</span>
-      <Icon iconClass="more"/>
-    </div>
+    <Bubble ref="bubble">
+      <div class="playlist_type">
+        <span>歌单类型</span>
+        <Icon iconClass="more"/>
+        <span style="margin-left: 10px">{{cat.name}}</span>
+      </div>
+      <template v-slot:content>
+        <div class="bubble_content">
+          <div :class="single_item_class(catAll)" style="width: calc(100% - 5px);margin: 0 0 5px 0" @click="changeCat(catAll)">{{catAll.name}}</div>
+          <div v-for="cat in catlist" class="filter_single">
+            <div class="single_label"><Icon :iconClass="cat.iconName"/><span class="name">{{cat.name}}</span></div>
+            <div class="single_items">
+            <div :class="single_item_class(item)" v-for="item in cat.sub" @click="changeCat(item)">{{item.name}}</div>
+            </div>
+          </div>
+        </div>
+      </template>
+    </Bubble>
     <div>
       <span>热门标签：</span>
-      <span></span>
+      <span v-for="tag in tags" class="hot_tag_name" @click="changeCat(tag)">{{tag.name}}</span>
     </div>
     <div class="playlists">
       <div v-for="item in playlists" class="playlist_item">
@@ -14,6 +28,7 @@
         <p class="name">{{item.name}}</p>
       </div>
     </div>
+
   </span>
 </template>
 
@@ -24,7 +39,10 @@
     data: function () {
       return {
         playlists: [],
-        tags: []
+        tags: [],
+        catAll: {},
+        catlist: [],
+        cat: {}
       };
     },
     created() {
@@ -34,14 +52,41 @@
       this.getHighqualityPlaylist();
     },
     methods: {
-      getPlaylist: function () {
-        getPlaylist({limit: 20}).then(res => {
+      single_item_class: function(item) {
+        if (item.name === this.cat.name) {
+          return 'single_item single_item_active';
+        }
+        return 'single_item';
+      },
+      getPlaylist: function (para) {
+        getPlaylist({limit: 20, ...para}).then(res => {
           this.playlists = res.playlists;
         });
       },
       getCatlist: function () {
         getCatlist().then(res => {
-          console.log(res);
+          this.catlist = Object.entries(res.categories).map(([k, v]) => {
+            return {
+              code: k,
+              name: v,
+              iconName: (function() {
+                switch (k) {
+                  case '0':
+                    return 'earth';
+                  case '1':
+                    return 'style';
+                  case '2':
+                    return 'coffee';
+                  case '3':
+                    return 'smile';
+                  case '4':
+                    return 'theme';
+                }
+              })(),
+              sub: res.sub.filter(i => i.category === parseInt(k))
+            };
+          });
+          this.catAll = res.all;
         });
       },
       getHotCatlist: function () {
@@ -53,6 +98,11 @@
         getHighqualityPlaylist().then(res => {
           console.log(res);
         });
+      },
+      changeCat: function (e) {
+        this.cat = e;
+        this.getPlaylist({cat: e.name});
+        this.$refs.bubble.hiddenBubble();
       }
     }
   };
@@ -62,6 +112,65 @@
   .playlist_type {
     display: flex;
     align-items: center;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+  .bubble_content {
+    width: 600px;
+    max-height: 400px;
+    overflow: auto;
+    .cat_all {
+      width: 99%;
+      padding: 5px 0;
+      text-align: center;
+      border: 1px solid #E1E1E2;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+    .filter_single {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      .single_label {
+        display: flex;
+        align-items: center;
+        width: 85px;
+        position: relative;
+        top: 5px;
+        .svg-icon {
+          font-size: 12px;
+          color: #E09494;
+        }
+        .name {
+          color: #CE4E4E;
+          margin-left: 5px;
+        }
+      }
+      .single_items {
+        display: flex;
+        flex-wrap: wrap;
+        width: calc(100% - 85px);
+      }
+    }
+  }
+  .single_item {
+    width: 20%;
+    text-align: center;
+    border: 1px solid #E1E1E2;
+    padding: 5px 0;
+    margin: 0 0 -1px -1px;
+    cursor: pointer;
+  }
+  .single_item_active {
+    border-color: #C62F2F;
+    position: relative;
+  }
+  .hot_tag_name {
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    color: #666666;
   }
   .playlists {
     display: flex;
