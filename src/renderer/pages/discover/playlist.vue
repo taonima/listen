@@ -28,17 +28,18 @@
         <p class="name">{{item.name}}</p>
       </div>
     </div>
-
+    <Pagination :page="page" @pageChange="pageChange"/>
   </span>
 </template>
 
 <script>
-  import { getPlaylist, getCatlist, getHotCatlist, getHighqualityPlaylist } from '@/services/discover';
+  import { getPlaylist, getCatlist, getHotCatlist } from '@/services/discover';
   export default {
     name: 'playlist',
     data: function () {
       return {
         playlists: [],
+        page: {},
         tags: [],
         catAll: {},
         catlist: [],
@@ -49,7 +50,6 @@
       this.getPlaylist();
       this.getCatlist();
       this.getHotCatlist();
-      this.getHighqualityPlaylist();
     },
     methods: {
       single_item_class: function(item) {
@@ -58,9 +58,19 @@
         }
         return 'single_item';
       },
-      getPlaylist: function (para) {
-        getPlaylist({limit: 20, ...para}).then(res => {
+      getPlaylist: function (para = {}) {
+        para = {
+          limit: 20,
+          cat: this.cat.name,
+          ...para
+        };
+        getPlaylist(para).then(res => {
           this.playlists = res.playlists;
+          this.page = {
+            total: res.total || 0,
+            pageSize: para.limit,
+            current: para.current || 1
+          };
         });
       },
       getCatlist: function () {
@@ -94,15 +104,13 @@
           this.tags = res.tags;
         });
       },
-      getHighqualityPlaylist: function () {
-        getHighqualityPlaylist().then(res => {
-          console.log(res);
-        });
-      },
       changeCat: function (e) {
         this.cat = e;
         this.getPlaylist({cat: e.name});
         this.$refs.bubble.hiddenBubble();
+      },
+      pageChange: function (current) {
+        this.getPlaylist({current, before: this.playlists[this.page.pageSize - 1]['updateTime']});
       }
     }
   };
@@ -175,11 +183,13 @@
   .playlists {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     padding: 10px 0;
     .playlist_item {
       width: 175px;
-      margin-bottom: 25px;
+      margin: 0 15px 25px 0;
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
       .name {
         display: -webkit-box;
         -webkit-box-orient: vertical;

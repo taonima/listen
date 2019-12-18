@@ -9,7 +9,7 @@ export const getPersonalized = (params) => {
 };
 
 export const getPlaylist = (params) => {
-  return http.get('/top/playlist', params);
+  return http.get('/top/playlist/highquality', params);
 };
 
 export const getCatlist = () => {
@@ -18,8 +18,4 @@ export const getCatlist = () => {
 
 export const getHotCatlist = () => {
   return http.get('/playlist/hot');
-};
-
-export const getHighqualityPlaylist = () => {
-  return http.get('/top/playlist/highquality');
 };

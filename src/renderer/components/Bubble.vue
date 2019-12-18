@@ -11,12 +11,6 @@
 <script>
   export default {
     name: 'Bubble',
-    props: {
-      position: {
-        default: 'bottom',
-        type: String
-      }
-    },
     data: function () {
       return {
         visible: false
