@@ -1,10 +1,12 @@
 <template>
-  <div class="listen_pagination">
-    <span @click="pageChange(1)" class="page_i">1</span>
-    <span v-for="i in show_page" @click="pageChange(i)" class="page_i">
+  <div class="listen_pagination" v-if="total">
+    <span @click="pageChange(1)" :class="page_class(1)">1</span>
+    <span v-if="show_page[0] && (show_page[0] - 1) > 1" class="page_i">···</span>
+    <span v-for="i in show_page" @click="pageChange(i)" :class="page_class(i)">
       {{i}}
     </span>
-    <span @click="pageChange(max_page)" v-if="max_page > 1" class="page_i">{{max_page}}</span>
+    <span v-if="show_page[4] && (show_page[4] + 1) < max_page" class="page_i">···</span>
+    <span @click="pageChange(max_page)" v-if="max_page > 1" :class="page_class(max_page)">{{max_page}}</span>
   </div>
 </template>
 
@@ -66,8 +68,13 @@
       }
     },
     methods: {
+      page_class(page) {
+        if (page === this.current) {
+          return 'page_i page_i_active';
+        }
+        return 'page_i';
+      },
       pageChange: function (current) {
-        console.log(current);
         this.$emit('pageChange', current);
       }
     },
@@ -81,11 +88,18 @@
 
 <style scoped  lang="scss" >
   .listen_pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     .page_i {
       cursor: pointer;
-      display: inline-block;
       width: 25px;
       height: 25px;
+      text-align: center;
+      line-height: 25px;
+    }
+    .page_i_active {
+      color: #C77373;
     }
   }
 </style>

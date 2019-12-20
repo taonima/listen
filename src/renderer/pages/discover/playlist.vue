@@ -110,7 +110,7 @@
         this.$refs.bubble.hiddenBubble();
       },
       pageChange: function (current) {
-        this.getPlaylist({current, before: this.playlists[this.page.pageSize - 1]['updateTime']});
+        this.getPlaylist({current, before: this.playlists[this.playlists.length - 1]['updateTime']});
       }
     }
   };
