@@ -22,6 +22,10 @@ const router = new Router({
         {
           path: 'fm',
           component: require('@/pages/fm/index').default
+        },
+        {
+          path: '/songSheet',
+          component: require('@/pages/songSheet/index').default
         }
       ]
     },

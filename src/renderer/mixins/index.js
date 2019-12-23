@@ -26,6 +26,9 @@ export default {
     },
     user_status: function () {
       return !empty(this.profile);
+    },
+    song_sheet: function () {
+      return this.$store.state.SongSheet.content;
     }
   }
 };

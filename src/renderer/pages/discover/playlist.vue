@@ -23,7 +23,7 @@
       <span v-for="tag in tags" class="hot_tag_name" @click="changeCat(tag)">{{tag.name}}</span>
     </div>
     <div class="playlists">
-      <div v-for="item in playlists" class="playlist_item">
+      <div v-for="item in playlists" class="playlist_item" @click="goToSongSheet(item)">
         <img :src="`${item.coverImgUrl}?param=175y175`" width="175" height="175">
         <p class="name">{{item.name}}</p>
       </div>
@@ -111,6 +111,10 @@
       },
       pageChange: function (current) {
         this.getPlaylist({current, before: this.playlists[this.playlists.length - 1]['updateTime']});
+      },
+      goToSongSheet: function (item) {
+        this.$store.dispatch('SongSheet/clear_content', item);
+        this.$router.push({path: '/songSheet'});
       }
     }
   };
@@ -187,6 +191,7 @@
     .playlist_item {
       width: 175px;
       margin: 0 15px 25px 0;
+      cursor: pointer;
       &:nth-child(4n) {
         margin-right: 0;
       }
