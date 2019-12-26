@@ -13,24 +13,28 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: require('@/pages/index').default,
-      redirect: '/discover',
+      redirect: '/discover/1',
       children: [
         {
-          path: 'discover',
+          path: 'discover/:id',
+          name: 'discover',
           component: require('@/pages/discover/index').default
         },
         {
           path: 'fm',
+          name: 'fm',
           component: require('@/pages/fm/index').default
         },
         {
-          path: '/songSheet',
+          path: 'songSheet/:id',
+          name: 'songSheet',
           component: require('@/pages/songSheet/index').default
         }
       ]
     },
     {
       path: '/login',
+      name: 'login',
       component: require('@/pages/login/index').default
     }
   ]

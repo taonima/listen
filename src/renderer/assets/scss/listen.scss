@@ -41,6 +41,9 @@
       .user, .app_operate {
         display: inline-flex;
         align-items: center;
+        .listen_svg {
+          margin-left: 15px;
+        }
       }
       .user >span {
         margin-right: 10px;

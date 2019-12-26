@@ -6,7 +6,10 @@
 
 <script>
   export default {
-    name: 'index'
+    name: 'fm',
+    created() {
+      console.log('fm');
+    }
   };
 </script>
 

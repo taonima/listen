@@ -37,7 +37,7 @@
     }
   ];
   export default {
-    name: 'index',
+    name: 'discover',
     components: {
       Recommend,
       Playlist
@@ -48,11 +48,12 @@
         tab_key: 1
       };
     },
+    created() {
+      this.tab_key = parseInt(this.$route.params.id);
+    },
     watch: {
       tab_key: function (v) {
-        if (v === 2) {
-
-        }
+        this.$router.push(`/discover/${v}`);
       }
     }
   };

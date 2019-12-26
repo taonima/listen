@@ -1,5 +1,5 @@
 const state = {
-  content: {}
+  content: ''
 };
 
 const mutations = {
@@ -10,10 +10,7 @@ const mutations = {
 
 const actions = {
   set_content({ commit }, data) {
-    return new Promise((resolve, reject) => {
-      commit('SET_CONTENT', data);
-      return resolve();
-    });
+    commit('SET_CONTENT', data);
   },
   clear_content({ commit }) {
     commit('SET_CONTENT', {});

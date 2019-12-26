@@ -19,3 +19,7 @@ export const getCatlist = () => {
 export const getHotCatlist = () => {
   return http.get('/playlist/hot');
 };
+
+export const getPlaylistDetail = (params) => {
+  return http.get('/playlist/detail', params);
+};

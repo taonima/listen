@@ -6,7 +6,7 @@
       </span>
     </div>
     <div class="tab_content">
-      <slot :name="key"></slot>
+      <slot :name="activeKey"></slot>
     </div>
   </div>
 </template>
@@ -18,7 +18,8 @@
       tabs: {
         required: true,
         type: Array
-      }
+      },
+      activeKey: ''
     },
     model: {
       prop: 'activeKey',
@@ -28,6 +29,9 @@
       return {
         key: 1
       };
+    },
+    created() {
+      this.key = this.activeKey;
     },
     methods: {
       tabChange: function (key) {

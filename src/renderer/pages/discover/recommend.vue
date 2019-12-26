@@ -8,7 +8,7 @@
       </span>
     </div>
     <div class="recommends">
-      <div v-for="recommend in recommends" class="recommend_item">
+      <div v-for="recommend in recommends" class="recommend_item" @click="goToSongSheet(recommend)">
         <p class="playCount">{{recommend.playCount}}万</p>
         <img :src="`${recommend.picUrl}?param=140y140`" width="140" height="140">
         <p class="name">{{recommend.name}}</p>
@@ -36,6 +36,10 @@
             this.recommends = res.result;
           }
         });
+      },
+      goToSongSheet: function (item) {
+        this.$store.dispatch('SongSheet/set_content', item);
+        this.$router.push({path: `/songSheet/${item.id}`});
       }
     }
   };
@@ -50,6 +54,7 @@
     .recommend_item {
       width: 140px;
       margin-bottom: 25px;
+      cursor: pointer;
       .playCount {
         position: relative;
         height: 14px;

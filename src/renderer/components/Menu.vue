@@ -1,8 +1,8 @@
 <template>
   <div class="listen_menu">
     <div class="title">{{title}}</div>
-    <router-link v-for="item in menus" :to="item.path">
-      <div :class="className(item.code)" v-on:click="menuClick(item.code)" >
+    <router-link v-for="(item, k) in menus" :to="item.path" :key="k">
+      <div :class="className(item.code)" @click="menuClick(item.code)" >
         <Icon :iconClass="item.icon"><span>{{item.name}}</span></Icon>
       </div>
     </router-link>
@@ -60,9 +60,15 @@
       line-height: 30px;
       padding-left: 20px;
       border-left: 3px solid #F5F5F7;
-      svg {
-        margin-right: 5px;
+      .listen_svg {
+        display: flex;
+        align-items: center;
+        svg {
+          margin-right: 5px;
+          font-size: 18px;
+        }
       }
+
     }
     .menu_item_active {
       cursor: pointer;

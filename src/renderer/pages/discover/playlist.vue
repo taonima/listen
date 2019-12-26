@@ -113,8 +113,8 @@
         this.getPlaylist({current, before: this.playlists[this.playlists.length - 1]['updateTime']});
       },
       goToSongSheet: function (item) {
-        this.$store.dispatch('SongSheet/clear_content', item);
-        this.$router.push({path: '/songSheet'});
+        this.$store.dispatch('SongSheet/set_content', item);
+        this.$router.push({path: `/songSheet/${item.id}`});
       }
     }
   };

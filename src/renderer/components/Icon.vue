@@ -1,9 +1,9 @@
 <template>
   <span :class="svgClass" @click="onClick">
-    <svg class="icon_svg" aria-hidden="true">
+    <svg class="icon" aria-hidden="true">
       <use :xlink:href="iconName"/>
     </svg>
-    <span>
+    <span v-if="slot.default">
       <slot></slot>
     </span>
   </span>
@@ -24,15 +24,14 @@
       }
     },
     computed: {
+      slot: function () {
+        return this.$slots;
+      },
       iconName() {
         return `#icon-${this.iconClass}`;
       },
       svgClass() {
-        if (this.className) {
-          return 'svg-icon ' + this.className;
-        } else {
-          return 'svg-icon';
-        }
+        return 'listen_svg ' + this.iconClass;
       }
     },
     methods: {
@@ -44,14 +43,13 @@
 </script>
 
 <style scoped lang="scss">
-  .svg-icon {
-    display: inline-flex;
-    align-items: center;
-    .icon_svg {
-      width: 1.5em;
-      height: 1.5em;
+  .listen_svg {
+    .icon {
+      width: 1em;
+      height: 1em;
       fill: currentColor;
       overflow: hidden;
+      vertical-align: -0.15em;
     }
   }
 </style>

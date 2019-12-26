@@ -27,7 +27,7 @@
         <Menu title="推荐" :menus="menus"/>
       </div>
       <div class="right">
-        <router-view></router-view>
+        <router-view/>
       </div>
     </div>
     <div class="layout_foot">
@@ -61,11 +61,6 @@
       return {
         menus
       };
-    },
-    created: function() {
-    },
-    updated: function() {
-      console.log(this.profile);
     },
     methods: {
       handleSearch: function (v) {

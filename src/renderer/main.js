@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import axios from 'axios';
+import moment from 'moment';
 
 import App from './App';
 import router from './router';
@@ -17,6 +18,8 @@ requireComponent.keys().forEach(fileName => {
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'));
 Vue.http = Vue.prototype.$http = axios;
+moment.locale('zh-cn');
+Vue.prototype.$moment = moment;
 Vue.config.productionTip = false;
 Vue.mixin(mixins);
 /* eslint-disable no-new */
