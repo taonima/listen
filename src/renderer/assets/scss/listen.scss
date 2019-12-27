@@ -1,4 +1,8 @@
 #listen {
+  .listen_svg {
+    -webkit-app-region: no-drag;
+    cursor: pointer;
+  }
   .layout_head {
     height: 50px;
     background: #C62F2F;
@@ -12,7 +16,7 @@
       margin-left: 20px;
       width: 200px;
       .icon {
-        vertical-align: middle;
+        font-size: 18px;
       }
     }
     .among {

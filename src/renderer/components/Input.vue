@@ -59,10 +59,8 @@
 
 <style scoped lang="scss">
   .listen_Input {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
     width: 210px;
+    position: relative;
     .prefix {
       color: #7D7D7D;
       font-size: 12px;
@@ -84,15 +82,12 @@
     }
     .suffix {
       color: #7D7D7D;
-      align-self: flex-end;
-      font-size: 12px;
+      font-size: 20px;
       height: 18px;
       position: absolute;
       cursor: pointer;
-      .svg-icon {
-        position: relative;
-        top: 2px;
-      }
+      top: -3px;
+      right: 3px;
     }
     .prefix_input {
       padding-left: 20px;

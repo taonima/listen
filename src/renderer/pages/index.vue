@@ -16,7 +16,7 @@
           <Icon iconClass="set"/>
         </div>
         <Icon iconClass="divider" className="divider"/>
-        <div class="app_operate">
+        <div class="app_operate" @onClick="handleMinimize">
           <Icon iconClass="minimize" @onClick="handleMinimize"/>
           <Icon iconClass="x" @onClick="handleHide"/>
         </div>
