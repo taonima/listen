@@ -38,7 +38,7 @@
       <div class="four_line">
         <p>
           <span>标签:</span>
-          <router-link v-for="tag in (_get(song_sheet, ['tags']) || [])" :to="`/discover/2`" :key="tag">{{tag}}</router-link>
+          <router-link v-for="tag in (_get(song_sheet, ['tags']) || [])" :to="`/discover/2?tag=${tag}`" :key="tag">{{tag}}</router-link>
         </p>
         <pre :class="pre_class">简介:{{song_sheet.description}}</pre>
         <Icon :iconClass="icon_name" @onClick="handleRetract"/>

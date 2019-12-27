@@ -47,6 +47,9 @@
       };
     },
     created() {
+      this.cat = {
+        name: this.$route.query.tag || ''
+      };
       this.getPlaylist();
       this.getCatlist();
       this.getHotCatlist();
