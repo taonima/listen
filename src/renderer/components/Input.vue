@@ -1,12 +1,12 @@
 <template>
   <span class="listen_Input">
-    <span v-if="prefix" class="prefix">
-      <Icon :name="prefix"/>
-    </span>
+    <template v-if="prefix" >
+      <Icon :name="prefix" class="prefix"/>
+    </template>
     <input :type="type" :placeholder="placeholder" v-model="value" @input="onChange" :class="input_class"/>
-    <span v-if="suffix" class="suffix" @click="suffixClick">
-      <Icon :name="suffix"/>
-    </span>
+    <template v-if="suffix" @click="suffixClick">
+      <Icon :name="suffix" class="suffix" />
+    </template>
   </span>
 </template>
 
@@ -62,8 +62,7 @@
     width: 210px;
     position: relative;
     .prefix {
-      color: #7D7D7D;
-      font-size: 12px;
+      font-size: 19px;
       height: 18px;
       position: absolute;
       cursor: pointer;
@@ -81,9 +80,7 @@
       }
     }
     .suffix {
-      color: #7D7D7D;
-      font-size: 20px;
-      height: 18px;
+      font-size: 19px;
       position: absolute;
       cursor: pointer;
       top: -3px;

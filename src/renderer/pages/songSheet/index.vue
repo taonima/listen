@@ -24,14 +24,12 @@
       </div>
       <div class="three_line">
         <Button type="main">
-          <span class="play"><Icon name="play"/>播放全部</span>
+          <Icon name="play"/>播放全部
           <template v-slot:after>
             <Icon name="add"/>
           </template>
         </Button>
-        <Button>
-          <span><Icon name="collect" />收藏</span>
-        </Button>
+        <Button><Icon name="collect" />收藏</Button>
         <Button><Icon name="share" />分享</Button>
         <Button><Icon name="download" />下载全部</Button>
       </div>
@@ -72,7 +70,7 @@
         </template>
       </Tabs>
     </div>
-    <i class="iconfont icon-iconkafei"></i>
+    <i class="listen_svg icon-iconkafei"></i>
   </div>
 </template>
 

@@ -2,9 +2,7 @@
   <div id="listen">
     <div class="layout_head">
       <div class="logo">
-        <Icon name="logo">
-          <span>听</span>
-        </Icon>
+        <Icon name="logo"/>听
       </div>
       <div class="among">
         <Search placeholder="搜索音乐" @onSearch="handleSearch"/>

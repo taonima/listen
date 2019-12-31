@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="head">
-      <Icon name="x" @onClick="handleClose"/>
+      <Icon name="close" @onClick="handleClose"/>
     </div>
     <template v-if="!profile.nickname">
       <div class="box">
@@ -64,12 +64,13 @@
     .head {
       font-size: 12px;
       min-height: 20px;
-      .svg-icon {
+      .listen_svg {
         position: absolute;
         right: 8px;
         top: 8px;
         color: #999999;
         cursor: pointer;
+        -webkit-app-region: no-drag;
       }
     }
     .box {

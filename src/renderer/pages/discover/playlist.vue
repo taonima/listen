@@ -153,7 +153,7 @@
         position: relative;
         top: 5px;
         .listen_svg {
-          font-size: 12px;
+          font-size: 16px;
           color: #E09494;
         }
         .name {

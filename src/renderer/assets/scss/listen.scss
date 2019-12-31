@@ -14,8 +14,10 @@
     .logo {
       margin-left: 20px;
       width: 200px;
-      .icon {
+      color: white;
+      .icon-logo {
         font-size: 18px;
+        margin-right: 10px;
       }
     }
     .among {
@@ -57,9 +59,10 @@
         margin-left: 10px;
         cursor: pointer;
       }
-      .svg-icon {
+      .listen_svg {
         color: #EEC1C1;
-        font-size: 10px;
+        font-size: 16px;
+        cursor: pointer;
       }
     }
   }

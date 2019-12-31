@@ -3,7 +3,7 @@
     <div class="title">{{title}}</div>
     <router-link v-for="(item, k) in menus" :to="item.path" :key="k">
       <div :class="className(item.code)" @click="menuClick(item.code)" >
-        <Icon :name="item.icon">{{item.name}}</Icon>
+        <Icon :name="item.icon"/>{{item.name}}
       </div>
     </router-link>
   </div>
@@ -61,14 +61,9 @@
       padding-left: 20px;
       border-left: 3px solid #F5F5F7;
       .listen_svg {
-        display: flex;
-        align-items: center;
-        .iconfont {
-          margin-right: 10px;
-          font-size: 18px;
-        }
+        margin-right: 10px;
+        font-size: 18px;
       }
-
     }
     .menu_item_active {
       cursor: pointer;
