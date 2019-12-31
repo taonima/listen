@@ -3,14 +3,14 @@
     <Bubble ref="bubble">
       <div class="playlist_type">
         <span>歌单类型</span>
-        <Icon iconClass="more"/>
+        <Icon name="right"/>
         <span style="margin-left: 10px">{{cat.name}}</span>
       </div>
       <template v-slot:content>
         <div class="bubble_content">
           <div :class="single_item_class(catAll)" style="width: calc(100% - 5px);margin: 0 0 5px 0" @click="changeCat(catAll)">{{catAll.name}}</div>
           <div v-for="cat in catlist" class="filter_single">
-            <div class="single_label"><Icon :iconClass="cat.iconName"/><span class="name">{{cat.name}}</span></div>
+            <div class="single_label"><Icon :name="cat.iconName"/><span class="name">{{cat.name}}</span></div>
             <div class="single_items">
             <div :class="single_item_class(item)" v-for="item in cat.sub" @click="changeCat(item)">{{item.name}}</div>
             </div>
@@ -152,7 +152,7 @@
         width: 85px;
         position: relative;
         top: 5px;
-        .svg-icon {
+        .listen_svg {
           font-size: 12px;
           color: #E09494;
         }

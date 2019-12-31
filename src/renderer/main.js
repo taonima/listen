@@ -6,7 +6,6 @@ import App from './App';
 import router from './router';
 import store from './store';
 import './assets/scss/base.scss';
-import './assets/icon.js';
 import mixins from './mixins';
 import requireComponent from './components';
 

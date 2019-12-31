@@ -1,7 +1,6 @@
 #listen {
   .listen_svg {
     -webkit-app-region: no-drag;
-    cursor: pointer;
   }
   .layout_head {
     height: 50px;
@@ -72,11 +71,11 @@
       height: 100%;
       overflow: auto;
     }
-    .left {
+    .left_body {
       width: 200px;
       background-color: #F5F5F7;
     }
-    .right {
+    .right_body {
       padding: 0 30px;
       width: calc(100% - 200px);
     }

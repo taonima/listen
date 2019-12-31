@@ -4,7 +4,7 @@
       <span class="name">推荐歌单</span>
       <span class="action">
         <span>更多</span>
-        <Icon iconClass="more"/>
+        <Icon name="right"/>
       </span>
     </div>
     <div class="recommends">

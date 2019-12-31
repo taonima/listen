@@ -24,16 +24,16 @@
       </div>
       <div class="three_line">
         <Button type="main">
-          <span class="play"><Icon iconClass="play"/>播放全部</span>
+          <span class="play"><Icon name="play"/>播放全部</span>
           <template v-slot:after>
-            <Icon iconClass="add"/>
+            <Icon name="add"/>
           </template>
         </Button>
         <Button>
-          <span><Icon iconClass="collect" />收藏</span>
+          <span><Icon name="collect" />收藏</span>
         </Button>
-        <Button><Icon iconClass="share" />分享</Button>
-        <Button><Icon iconClass="download" />下载全部</Button>
+        <Button><Icon name="share" />分享</Button>
+        <Button><Icon name="download" />下载全部</Button>
       </div>
       <div class="four_line">
         <p>
@@ -41,21 +41,66 @@
           <router-link v-for="tag in (_get(song_sheet, ['tags']) || [])" :to="`/discover/2?tag=${tag}`" :key="tag">{{tag}}</router-link>
         </p>
         <pre :class="pre_class">简介:{{song_sheet.description}}</pre>
-        <Icon :iconClass="icon_name" @onClick="handleRetract"/>
+        <Icon :name="icon_name" @onClick="handleRetract"/>
       </div>
     </div>
+    <div class="song_list">
+      <Tabs :tabs="tabs" v-model="tab_key" tabPosition="left">
+        <template v-slot:1>
+          <table>
+            <thead>
+            <tr>
+            <th width="50"></th>
+            <th width="60">操作</th>
+            <th width="265">歌名</th>
+            <th width="185">歌手</th>
+            <th width="170">专辑</th>
+            <th width="90">时长</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(item, k) in (playList.tracks || [])">
+              <td>{{k + 1 < 10 ? `0${k + 1}` : k + 1}}</td>
+              <td></td>
+              <td class="name"><span><span>{{item.al.name}}</span><span>{{`${item.alia.length ? `(${item.alia})` : ''}`}}</span></span></td>
+              <td><span><span class="singer_name" v-for="singer in item.ar">{{singer.name}}</span></span></td>
+              <td><span>{{item.al.name}}</span></td>
+              <td>{{secondDeal(item.dt)}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </template>
+      </Tabs>
+    </div>
+    <i class="iconfont icon-iconkafei"></i>
   </div>
 </template>
 
 <script>
   import { getPlaylistDetail } from '@/services/discover';
-  import { empty, _get } from '@/utils';
+  import { empty, _get, secondDeal } from '@/utils';
+  const tabs = [
+    {
+      label: '歌曲列表',
+      key: 1
+    },
+    {
+      label: '评论',
+      key: 2
+    },
+    {
+      label: '收藏者',
+      key: 3
+    }
+  ];
   export default {
     name: 'songSheet',
     data: function() {
       return {
+        tabs,
         playList: {},
-        retract: true // 是否展开简介
+        retract: true, // 是否展开简介
+        tab_key: 1
       };
     },
     created() {
@@ -78,11 +123,12 @@
         if (this.retract) {
           return 'down';
         }
-        return 'up';
+        return 'top';
       }
     },
     methods: {
       _get,
+      secondDeal,
       getSongSheet: function (id) {
         getPlaylistDetail({id}).then(res => {
           this.playList = res.playlist;
@@ -96,14 +142,22 @@
 </script>
 
 <style lang="scss" scoped >
+  @import '@/assets/scss/mixin.scss';
   .song {
-    display: flex;
     margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
     align-items: end;
+    >img {
+      vertical-align: top;
+    }
     .introduce {
       margin-left: 30px;
       flex-grow: 1;
       position: relative;
+      display: inline-block;
+      vertical-align: top;
+      width: calc(100% - 230px);
       .one_line {
         >div {
           display: inline-block;
@@ -173,7 +227,6 @@
         font-size: 12px;
         margin-top: 10px;
         line-height: 1.5;
-        height: 80px;
         position: relative;
         a {
           color: #0C73C2;
@@ -194,11 +247,7 @@
           width: calc(100% - 24px);
         }
         .retract {
-          text-overflow: ellipsis;
-          -webkit-line-clamp: 2;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
+          @include text-overflow($line: 3);
         }
         .listen_svg {
           position: absolute;
@@ -208,6 +257,62 @@
           cursor: pointer;
         }
       }
+    }
+    .song_list {
+      margin: 30px -30px;
+      .singer_name {
+        &::after {
+          content: '/';
+        }
+        &:last-child::after  {
+          content: '';
+        }
+      }
+      table {
+        width: 100%;
+        th {
+          border: 1px solid #E1E1E2;
+          border-top: none;
+          height: 26px;
+          text-align: left;
+          padding-left: 10px;
+          &:first-child {
+            border-left: none;
+          }
+          &:last-child {
+            border-right: none;
+          }
+        }
+        td {
+          padding: 4px 10px;
+          &:first-child {
+            text-align: right;
+          }
+          >span {
+            @include text-overflow($line: 1);
+          }
+        }
+        tbody {
+          color: #666666;
+          .name {
+            span span:first-child {
+              color: black;
+            }
+          }
+          tr:nth-child(2n) {
+            background-color: #F5F5F7;
+          }
+          tr:hover {
+            background-color: #EDEDED;
+          }
+        }
+      }
+      .listen_tabs {
+        /deep/ .tab_content {
+          padding-top: 0 !important;
+        }
+      }
+
     }
   }
 </style>

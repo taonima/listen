@@ -9,6 +9,7 @@ const path = require('path');
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
  */
+console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV !== 'development') {
   global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\');
 }
@@ -38,10 +39,13 @@ function createWindow () {
   });
 }
 function createTray () {
-  tray = new Tray(path.join(__dirname, '../../build/icons/icon.ico'));
+  console.log(path.join(__static, './icons/icon.ico'))
+  console.log('__dirname', __dirname);
+  console.log('__static', __static);
+  tray = new Tray(path.join(__static, './icons/icon.ico'));
   tray.setToolTip('听吗');
   const contextMenu = Menu.buildFromTemplate([
-    { label: '退出', icon: path.join(__dirname, '../../build/icons/exit.png'), role: 'quit' }
+    { label: '退出', icon: path.join(__static, './icons/exit.png'), role: 'quit' }
   ]);
   tray.setContextMenu(contextMenu);
   tray.on('click', () => {

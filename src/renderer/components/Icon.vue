@@ -1,8 +1,6 @@
 <template>
-  <span :class="svgClass" @click="onClick">
-    <svg class="icon" aria-hidden="true">
-      <use :xlink:href="iconName"/>
-    </svg>
+  <span :class="svgClass[0]" @click="onClick">
+    <i :class="svgClass[1]"/>
     <span v-if="slot.default">
       <slot></slot>
     </span>
@@ -14,7 +12,7 @@
   export default {
     name: 'Icon',
     props: {
-      iconClass: {
+      name: {
         type: String,
         required: true
       },
@@ -28,10 +26,10 @@
         return this.$slots;
       },
       iconName() {
-        return `#icon-${this.iconClass}`;
+        return `#icon-${this.name}`;
       },
       svgClass() {
-        return 'listen_svg ' + this.iconClass;
+        return ['listen_svg ' + this.name, 'iconfont ' + `icon-${this.name}`];
       }
     },
     methods: {

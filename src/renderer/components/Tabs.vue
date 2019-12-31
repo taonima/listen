@@ -1,6 +1,6 @@
 <template>
-  <div class="listen_Tabs">
-    <div class="tab">
+  <div class="listen_tabs">
+    <div :class="tab_class">
       <span v-for="tab in tabs" :key="tab.key" :class="label_class(tab.key)" @click="tabChange(tab.key)">
         {{tab.label}}
       </span>
@@ -19,6 +19,10 @@
         required: true,
         type: Array
       },
+      tabPosition: {
+        type: String,
+        default: 'center'
+      },
       activeKey: ''
     },
     model: {
@@ -32,6 +36,11 @@
     },
     created() {
       this.key = this.activeKey;
+    },
+    computed: {
+      tab_class: function () {
+        return 'tab ' + `tab_${this.tabPosition}`;
+      }
     },
     methods: {
       tabChange: function (key) {
@@ -48,10 +57,16 @@
   };
 </script>
 
-<style scoped lang="scss">
-  .listen_Tabs {
-    .tab {
+<style lang="scss">
+  .listen_tabs {
+    .tab_center {
       text-align: center;
+    }
+    .tab_left {
+      text-align: left;
+      padding-left: 50px;
+    }
+    .tab {
       border-bottom: 1px solid #E1E1E2;
       .label {
         padding: 10px;

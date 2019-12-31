@@ -3,7 +3,7 @@
     class="listen_search"
     :placeholder="placeholder"
     @onChange="onChange"
-    suffix="magnifier"
+    suffix="search"
     @suffixClick="onclick"
   />
 </template>

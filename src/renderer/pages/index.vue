@@ -2,7 +2,7 @@
   <div id="listen">
     <div class="layout_head">
       <div class="logo">
-        <Icon iconClass="logo">
+        <Icon name="logo">
           <span>听</span>
         </Icon>
       </div>
@@ -13,20 +13,20 @@
         <div class="user">
           <span v-if="user_status" @click="openLogin">{{profile.nickname}}</span>
           <span v-else @click="openLogin">登录</span>
-          <Icon iconClass="set"/>
+          <Icon name="set"/>
         </div>
-        <Icon iconClass="divider" className="divider"/>
+        <Icon name="divider" className="divider"/>
         <div class="app_operate" @onClick="handleMinimize">
-          <Icon iconClass="minimize" @onClick="handleMinimize"/>
-          <Icon iconClass="x" @onClick="handleHide"/>
+          <Icon name="minimize" @onClick="handleMinimize"/>
+          <Icon name="close" @onClick="handleHide"/>
         </div>
       </div>
     </div>
     <div class="layout_body">
-      <div class="left">
+      <div class="left_body">
         <Menu title="推荐" :menus="menus"/>
       </div>
-      <div class="right">
+      <div class="right_body">
         <router-view/>
       </div>
     </div>
@@ -43,7 +43,7 @@
   let loginWin = null;
   const menus = [
     {
-      icon: 'note',
+      icon: 'music',
       name: '发现音乐',
       code: 1,
       path: '/discover'

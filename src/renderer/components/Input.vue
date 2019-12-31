@@ -1,11 +1,11 @@
 <template>
   <span class="listen_Input">
     <span v-if="prefix" class="prefix">
-      <Icon :iconClass="prefix"/>
+      <Icon :name="prefix"/>
     </span>
     <input :type="type" :placeholder="placeholder" v-model="value" @input="onChange" :class="input_class"/>
     <span v-if="suffix" class="suffix" @click="suffixClick">
-      <Icon :iconClass="suffix"/>
+      <Icon :name="suffix"/>
     </span>
   </span>
 </template>

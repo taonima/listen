@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="head">
-      <Icon iconClass="x" @onClick="handleClose"/>
+      <Icon name="x" @onClick="handleClose"/>
     </div>
     <template v-if="!profile.nickname">
       <div class="box">

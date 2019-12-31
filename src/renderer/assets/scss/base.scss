@@ -1,5 +1,9 @@
-@import './listen.scss';
-@import './other.scss';
+@import 'listen';
+@import 'other';
+@import 'mixin';
+@import 'font';
+@import "iconfont.css";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -15,7 +19,8 @@ html {
 }
 
 body {
-  font-family: "Microsoft YaHei UI";
+  font-family: 'simkai' !important;
+  font-weight: 700;
   font-size: 14px;
   letter-spacing: 0.5px;
   box-shadow: 0 0 5px #F5F5F7;
@@ -47,6 +52,19 @@ button {
 input {
   border: none;
   outline:medium;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+pre {
+  font-family: 'simkai' !important;
+}
+
+img {
+  border-style: none;
+  vertical-align: top;
 }
 
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
