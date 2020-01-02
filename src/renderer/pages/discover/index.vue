@@ -5,7 +5,7 @@
         <Recommend/>
       </template>
       <template v-slot:2>
-        <Playlist/>
+        <Songs/>
       </template>
     </Tabs>
   </div>
@@ -13,7 +13,7 @@
 
 <script>
   import Recommend from './recommend';
-  import Playlist from './playlist';
+  import Songs from './songs';
   const tabs = [
     {
       label: '个性推荐',
@@ -40,7 +40,7 @@
     name: 'discover',
     components: {
       Recommend,
-      Playlist
+      Songs
     },
     data: function () {
       return {

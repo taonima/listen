@@ -26,8 +26,7 @@
         document.removeEventListener('click', this.docClick);
       },
       docClick: function (e) {
-        console.log(e);
-        if (e.path.length < 14) {
+        if (!document.querySelector('.bubble_inner').contains(e.target)) {
           this.hiddenBubble();
         }
       }
