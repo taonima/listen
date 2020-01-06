@@ -1,9 +1,9 @@
 <template>
   <div id="play">
     <div class="operate">
-      <div class="pre"><Icon name="pre" @onClick="handlePre"/></div>
-      <div class="play"><Icon name="play" @onClick="handlePlay"/></div>
-      <div class="next"><Icon name="next" @onClick="handleNext"/></div>
+      <div class="pre"><Icon name="pre" @click="handlePre"/></div>
+      <div class="play"><Icon name="play" @click="handlePlay"/></div>
+      <div class="next"><Icon name="next" @click="handleNext"/></div>
     </div>
     <div class="progress">
       进度条
@@ -12,7 +12,7 @@
       音量
     </div>
     <div class="play_set">
-      <Icon name="songs" @onClick="showSongs"/>
+      <Icon name="songs" @click.native.stop="showSongs"/>
     </div>
 
     <Modal :penetrate="true" modalClass="songs_modal" ref="songs">

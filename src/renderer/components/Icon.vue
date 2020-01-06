@@ -22,7 +22,7 @@
     },
     methods: {
       onClick: function () {
-        this.$emit('onClick');
+        this.$emit('click');
       }
     }
   };

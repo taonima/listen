@@ -39,7 +39,7 @@
           <router-link v-for="tag in (_get(song_sheet, ['tags']) || [])" :to="`/discover/2?tag=${tag}`" :key="tag">{{tag}}</router-link>
         </p>
         <pre :class="pre_class">简介:{{song_sheet.description}}</pre>
-        <Icon :name="icon_name" @onClick="handleRetract"/>
+        <Icon :name="icon_name" @click="handleRetract"/>
       </div>
     </div>
     <div class="song_list">
@@ -57,11 +57,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(item, k) in (playList.tracks || [])">
+            <tr v-for="(item, k) in (playList.tracks || [])" :key="k">
               <td>{{k + 1 < 10 ? `0${k + 1}` : k + 1}}</td>
               <td></td>
               <td class="name"><span><span>{{item.al.name}}</span><span>{{`${item.alia.length ? `(${item.alia})` : ''}`}}</span></span></td>
-              <td><span><span class="singer_name" v-for="singer in item.ar">{{singer.name}}</span></span></td>
+              <td><span><span class="singer_name" v-for="singer in item.ar" :key="singer.id">{{singer.name}}</span></span></td>
               <td><span>{{item.al.name}}</span></td>
               <td>{{secondDeal(item.dt)}}</td>
             </tr>

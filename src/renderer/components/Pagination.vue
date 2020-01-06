@@ -2,7 +2,7 @@
   <div class="listen_pagination" v-if="total">
     <span @click="pageChange(1)" :class="page_class(1)">1</span>
     <span v-if="show_page[0] && (show_page[0] - 1) > 1" class="page_i">···</span>
-    <span v-for="i in show_page" @click="pageChange(i)" :class="page_class(i)">
+    <span v-for="i in show_page" @click="pageChange(i)" :key="i" :class="page_class(i)">
       {{i}}
     </span>
     <span v-if="show_page[4] && (show_page[4] + 1) < max_page" class="page_i">···</span>

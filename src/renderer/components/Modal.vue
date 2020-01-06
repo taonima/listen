@@ -53,6 +53,25 @@
     methods: {
       showHidden: function () {
         this.visible = !this.visible;
+      },
+      docClick: function (e) {
+        console.log(e.path);
+        let isPlay = e.path.includes(document.querySelector('#play'));
+        console.log(isPlay);
+        if (!document.querySelector('.listen_modal').contains(e.target) && !isPlay) {
+          this.showHidden();
+        }
+      }
+    },
+    watch: {
+      visible: function (v) {
+        if (v) {
+          if (this.penetrate) {
+            document.addEventListener('click', this.docClick);
+          }
+        } else {
+          document.removeEventListener('click', this.docClick);
+        }
       }
     }
   };
