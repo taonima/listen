@@ -12,8 +12,14 @@
       音量
     </div>
     <div class="play_set">
-      <Icon name="songs"/>
+      <Icon name="songs" @onClick="showSongs"/>
     </div>
+
+    <Modal :penetrate="true" modalClass="songs_modal" ref="songs">
+      <div class="songs_com">
+
+      </div>
+    </Modal>
   </div>
 </template>
 
@@ -28,7 +34,10 @@
         console.log('handlePlay');
       },
       handleNext: function () {
-        console.log('handleNext');
+        console.log(this.$refs);
+      },
+      showSongs: function () {
+        this.$refs.songs.showHidden();
       }
     }
   };

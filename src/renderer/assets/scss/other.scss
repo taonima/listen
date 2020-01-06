@@ -12,3 +12,16 @@
     cursor: pointer;
   }
 }
+.songs_modal {
+  background-color: #F4F4F6;
+  right: 5px;
+  bottom: 55px;
+  transform: none !important;
+  top: unset !important;
+  left: unset !important;
+  .songs_com {
+    width: 580px;
+    height: 470px;
+  }
+}
+
