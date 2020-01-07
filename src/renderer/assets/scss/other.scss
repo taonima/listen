@@ -1,3 +1,4 @@
+@import './mixin.scss';
 .other_label {
   font-size: 18px;
   border-bottom: 1px solid #E1E1E2;
@@ -19,9 +20,71 @@
   transform: none !important;
   top: unset !important;
   left: unset !important;
+  border-top: 1px solid #C2C2C4;
+  border-left: 1px solid #C2C2C4;
+  box-shadow: 0 0 5px #C2C2C4;
   .songs_com {
     width: 580px;
     height: 470px;
+    .title {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      border-bottom: 1px solid #E1E1E2;
+      .icon-close {
+        cursor: pointer;
+      }
+    }
+    .briefly {
+      height: 30px;
+      display: flex;
+      padding: 0 20px;
+      line-height: 30px;
+      justify-content: space-between;
+      background-color: white;
+      border-bottom: 1px solid #EEEEEE;
+      .listen_svg {
+        vertical-align: 0;
+      }
+    }
+    ul {
+      li {
+        display: flex;
+        padding: 0 20px;
+        height: 30px;
+        line-height: 30px;
+        .name {
+          width: 350px;
+        }
+        .singer_name {
+          width: 150px;
+          span::after {
+            content: '/';
+          }
+          span:last-child::after {
+            content: '';
+          }
+        }
+        .time {
+          width: 40px;
+          .listen_svg {
+            cursor: pointer;
+          }
+        }
+        >span {
+          @include text-overflow($line: 1);
+        }
+        &:nth-child(1n) {
+          background-color: white;
+        }
+        &:nth-child(2n) {
+          background-color: #F4F4F4;
+        }
+        &:hover {
+          background-color: #EDEDED;
+        }
+      }
+    }
   }
 }
 

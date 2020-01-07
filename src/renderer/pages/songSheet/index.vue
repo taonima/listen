@@ -57,10 +57,10 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(item, k) in (playList.tracks || [])" :key="k">
-              <td>{{k + 1 < 10 ? `0${k + 1}` : k + 1}}</td>
+            <tr v-for="(item, k) in (playList.tracks || [])" :key="k" @dblclick="addSong(item)">
+              <td>{{k + 1 &lt; 10 ? `0${k + 1}` : k + 1}}</td>
               <td></td>
-              <td class="name"><span><span>{{item.al.name}}</span><span>{{`${item.alia.length ? `(${item.alia})` : ''}`}}</span></span></td>
+              <td class="name"><span><span>{{item.name}}</span><span>{{`${item.alia.length ? `(${item.alia})` : ''}`}}</span></span></td>
               <td><span><span class="singer_name" v-for="singer in item.ar" :key="singer.id">{{singer.name}}</span></span></td>
               <td><span>{{item.al.name}}</span></td>
               <td>{{secondDeal(item.dt)}}</td>
@@ -134,6 +134,11 @@
       },
       handleRetract: function () {
         this.retract = !this.retract;
+      },
+      addSong: function (item) {
+        if (!this.$store.state.SongSheet.songList.map(i => i.id).includes(item.id)) {
+          this.$store.dispatch('SongSheet/push_songList', item);
+        }
       }
     }
   };
