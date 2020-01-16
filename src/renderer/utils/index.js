@@ -22,13 +22,13 @@ export function _get(obj, keys) {
 
 export function secondDeal(time) { // 接收毫秒
   time = time / 1000; // 这首歌几秒
-  const m = parseInt(time / 60);
-  const s = parseInt(time % 60);
+  const m = parseInt(time / 60) || 0;
+  const s = parseInt(time % 60) || 0;
   if (m) {
     if (m >= 60) {
-      return secondDeal(m * 1000) + ':' + `${s > 10 ? s : `0${s}`}`;
+      return secondDeal(m * 1000) + ':' + `${s >= 10 ? s : `0${s}`}`;
     }
-    return `${m > 10 ? m : `0${m}`}:${s > 10 ? s : `0${s}`}`;
+    return `${m >= 10 ? m : `0${m}`}:${s >= 10 ? s : `0${s}`}`;
   }
-  return `00:${s > 10 ? s : `0${s}`}`;
+  return `00:${s >= 10 ? s : `0${s}`}`;
 }

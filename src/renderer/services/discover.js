@@ -23,3 +23,11 @@ export const getHotCatlist = () => {
 export const getPlaylistDetail = (params) => {
   return http.get('/playlist/detail', params);
 };
+
+export const getSongDetail = (params) => {
+  return http.get('/song/detail', params);
+};
+
+export const getSongUrl = (params) => {
+  return http.get('/song/url', params);
+};

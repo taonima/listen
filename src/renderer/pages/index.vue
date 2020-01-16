@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="layout_foot">
-      <Play/>
+      <PlayControl/>
     </div>
   </div>
 </template>

@@ -75,7 +75,7 @@
 </template>
 
 <script>
-  import { getPlaylistDetail } from '@/services/discover';
+  import { getPlaylistDetail, getSongUrl } from '@/services/discover';
   import { empty, _get, secondDeal } from '@/utils';
   const tabs = [
     {
@@ -136,9 +136,23 @@
         this.retract = !this.retract;
       },
       addSong: function (item) {
-        if (!this.$store.state.SongSheet.songList.map(i => i.id).includes(item.id)) {
-          this.$store.dispatch('SongSheet/push_songList', item);
+        if (!this.$store.state.PlayControl.songList.map(i => i.id).includes(item.id)) {
+          this.$store.dispatch('PlayControl/push_songList', {
+            position: 'before',
+            data: item
+          });
         }
+        getSongUrl({
+          id: item.id
+        }).then(res => {
+          if (!empty(res.data[0])) {
+            item = {
+              ...item,
+              ...res.data[0]
+            };
+          }
+          this.$store.dispatch('PlayControl/set_playingSong', item);
+        });
       }
     }
   };
