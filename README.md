@@ -1,22 +1,24 @@
+# listen_cli3
 
-# listen
+## Project setup
+```
+yarn install
+```
 
-> An electron-vue project
+### Compiles and hot-reloads for development
+```
+yarn serve
+```
 
-# install dependencies
-npm install
+### Compiles and minifies for production
+```
+yarn build
+```
 
-# serve with hot reload at localhost:9080
-npm run dev
+### Lints and fixes files
+```
+yarn lint
+```
 
-# build electron application for production
-npm run build
-
-# run unit & end-to-end tests
-npm test
-
-
-# lint all JS/Vue component files in `src/`
-npm run lint
-
-This project was generated with electron-vue@8fae476 using vue-cli. Documentation about the original structure can be found here.
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
