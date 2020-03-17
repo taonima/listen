@@ -75,11 +75,9 @@ export default {
 <style scoped lang="scss">
   .listen_Input {
     width: 210px;
-    position: relative;
+    display: inline-flex;
     .prefix {
       font-size: 19px;
-      height: 18px;
-      position: absolute;
       cursor: pointer;
       .svg-icon {
         position: relative;
@@ -96,13 +94,9 @@ export default {
     }
     .suffix {
       font-size: 19px;
-      position: absolute;
       cursor: pointer;
-      top: -3px;
-      right: 3px;
-    }
-    .prefix_input {
-      padding-left: 20px;
+      position: relative;
+      left: -24px;
     }
     .suffix_input {
       padding-right: 20px;

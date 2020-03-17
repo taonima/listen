@@ -5,10 +5,12 @@
     </div>
     <template v-if="!profile.nickname">
       <div class="box">
+        <p class="p_1">欢迎</p>
         <div class="input">
           <Input placeholder="请输入手机号" prefix="phone" v-model="phone"/>
-          <Input placeholder="请输入密码" prefix="password" v-model="password"/>
+          <Input placeholder="请输入密码" prefix="suo" v-model="password"/>
         </div>
+        <p class="p_2">下次将自动登录</p>
         <Button @onClick="handleLogin">登录</Button>
         <p class="error" v-if="error.code !== 200">{{error.message}}</p>
       </div>
@@ -33,7 +35,7 @@ export default {
   },
   methods: {
     handleClose: function () {
-      remote.getCurrentWindow().hide()
+      remote.getCurrentWindow().close()
     },
     handleLogin: function () {
       login({
@@ -60,10 +62,10 @@ export default {
   .login {
     width: 100%;
     height: 100%;
-    -webkit-app-region: drag;
     .head {
       font-size: 12px;
       min-height: 20px;
+      -webkit-app-region: drag;
       .listen_svg {
         position: absolute;
         right: 8px;
@@ -74,25 +76,35 @@ export default {
       }
     }
     .box {
-      width: 65%;
-      margin: 150px auto 0;
-      text-align: center;
+      padding: 30px 30px 0;
+      .p_1 {
+        color: #E56464;
+        font-size: 36px;
+        margin-bottom: 40px;
+      }
       .input {
         .listen_Input {
           margin-top: 20px;
           width: 100%;
           border-bottom: 1px solid #E5E5E5;
+          padding: 10px 0;
+          color: #948e8e;
           input {
           }
         }
       }
+      .p_2 {
+        margin-top: 20px;
+        color: #948e8e;
+      }
       button {
         width: 100%;
-        margin-top: 30px;
+        margin-top: 45px;
         border: none;
         background-color: #EA4848;
         color: white;
         letter-spacing: 2px;
+        height: 35px;
         &:hover {
           background-color: #A82828;
         }

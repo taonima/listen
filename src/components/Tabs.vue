@@ -34,7 +34,7 @@ export default {
   },
   data: function () {
     return {
-      key: 1
+      key: '1'
     }
   },
   created () {
