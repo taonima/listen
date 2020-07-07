@@ -5,9 +5,10 @@ import moment from 'moment'
 import App from './App'
 import router from './router'
 import store from './store'
-import './assets/scss/base.scss'
 import mixins from './mixins'
 import requireComponent from './components'
+
+import './assets/scss/base.scss'
 
 requireComponent.keys().forEach(fileName => {
   // 获取组件配置

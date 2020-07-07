@@ -76,18 +76,25 @@ export default {
           width: 350,
           height: 530,
           resizable: false,
-          frame: false,
           parent: remote.getCurrentWindow(),
-          transparent: true
+          frame: false,
+          transparent: true,
+          webPreferences: {
+            nodeIntegration: true // 是否集成 Nodejs,把之前预加载的js去了，发现也可以运行
+          }
         })
+        loginWin.loadURL(`${winURL}login`)
+        loginWin.webContents.openDevTools()
+        loginWin.on('ready-to-show', () => {
+          loginWin.show()
+        })
+        loginWin.on('closed', () => {
+          this.$forceUpdate()
+          loginWin = null
+        })
+      } else {
+        loginWin.show()
       }
-      loginWin.webContents.closeDevTools()
-      loginWin.loadURL(`${winURL}/#/login`)
-      loginWin.show()
-      loginWin.on('closed', () => {
-        this.$forceUpdate()
-        loginWin = null
-      })
     }
   }
 }

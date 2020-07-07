@@ -7,7 +7,7 @@ export default {
   },
   computed: {
     account: function () {
-      if (empty(this.$store.state.User.account)) {
+      if (!empty(this.$store.state.User.account)) {
         return this.$store.state.User.account
       }
       return {}
@@ -19,7 +19,7 @@ export default {
       return {}
     },
     bindings: function () {
-      if (empty(this.$store.state.User.bindings)) {
+      if (!empty(this.$store.state.User.bindings)) {
         return this.$store.state.User.bindings
       }
       return {}

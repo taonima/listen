@@ -45,15 +45,19 @@ export default {
   data: function () {
     return {
       tabs,
-      tab_key: 1
+      tab_key: '1'
     }
   },
   created () {
     this.tab_key = this.$route.params.id
   },
   watch: {
-    tab_key: function (v) {
-      this.$router.push(`/discover/${v}`)
+    tab_key: function (v, oldV) {
+      if (v !== oldV) {
+        this.$router.push(`/discover/${v}`).catch(err => {
+          console.log(err)
+        })
+      }
     }
   }
 }

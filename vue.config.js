@@ -4,7 +4,7 @@ function resolve (dir) {
   return path.join(__dirname, dir)
 }
 const productName = 'test'
-const appId = 'com.zjinh.app.' + productName
+const appId = 'com.taonima.app.' + productName
 const menuCategory = 'electron-cli3'
 const shortcutName = 'cli3-测试'
 const port = 9020
@@ -18,7 +18,7 @@ module.exports = {
     resolve: {
       alias: {
         // 别名
-        vue$: 'vue/dist/vue.esm.js', // 加上这一句
+        vue$: 'vue/dist/vue.esm.js' // 加上这一句
       }
     }
   },

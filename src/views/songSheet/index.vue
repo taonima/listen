@@ -1,45 +1,47 @@
 <template>
   <div class="song">
-    <img :src="`${song_sheet.coverImgUrl}?param=200y200`">
-    <div class="introduce">
-      <div class="one_line">
-        <div class="tag">歌单</div>
-        <div class="song_name">{{song_sheet.name}}</div>
-        <div class="number">
-          <div>
-            <p>歌曲数</p>
-            <p>{{song_sheet.trackCount}}</p>
-          </div>
-          <div class="vLine"/>
-          <div>
-            <p>播放数</p>
-            <p>{{parseInt(song_sheet.playCount / 10000)}}万</p>
+    <div class="top">
+      <img :src="`${song_sheet.coverImgUrl}?param=200y200`">
+      <div class="introduce">
+        <div class="one_line">
+          <div class="tag">歌单</div>
+          <div class="song_name">{{song_sheet.name}}</div>
+          <div class="number">
+            <div>
+              <p>歌曲数</p>
+              <p>{{song_sheet.trackCount}}</p>
+            </div>
+            <div class="vLine"/>
+            <div>
+              <p>播放数</p>
+              <p>{{parseInt(song_sheet.playCount / 10000)}}万</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="tow_line">
-        <img :src="`${_get(song_sheet, ['creator', 'avatarUrl'])}?param=30y30`">
-        <span>{{_get(song_sheet, ['creator', 'nickname'])}}</span>
-        <span>{{$moment(_get(song_sheet, ['createTime'])).format('YYYY-MM-DD')}}创建</span>
-      </div>
-      <div class="three_line">
-        <Button type="main">
-          <Icon name="play"/>播放全部
-          <template v-slot:after>
-            <Icon name="add"/>
-          </template>
-        </Button>
-        <Button><Icon name="collect" />收藏</Button>
-        <Button><Icon name="share" />分享</Button>
-        <Button><Icon name="download" />下载全部</Button>
-      </div>
-      <div class="four_line">
-        <p>
-          <span>标签:</span>
-          <router-link v-for="tag in (_get(song_sheet, ['tags']) || [])" :to="`/discover/2?tag=${tag}`" :key="tag">{{tag}}</router-link>
-        </p>
-        <pre :class="pre_class">简介:{{song_sheet.description}}</pre>
-        <Icon :name="icon_name" @click="handleRetract"/>
+        <div class="tow_line">
+          <img :src="`${_get(song_sheet, ['creator', 'avatarUrl'])}?param=30y30`">
+          <span>{{_get(song_sheet, ['creator', 'nickname'])}}</span>
+          <span>{{$moment(_get(song_sheet, ['createTime'])).format('YYYY-MM-DD')}}创建</span>
+        </div>
+        <div class="three_line">
+          <Button type="main">
+            <Icon name="play"/>播放全部
+            <template v-slot:after>
+              <Icon name="add"/>
+            </template>
+          </Button>
+          <Button><Icon name="collect" />收藏</Button>
+          <Button><Icon name="share" />分享</Button>
+          <Button><Icon name="download" />下载全部</Button>
+        </div>
+        <div class="four_line">
+          <p>
+            <span>标签:</span>
+            <router-link v-for="tag in (_get(song_sheet, ['tags']) || [])" :to="`/discover/2?tag=${tag}`" :key="tag">{{tag}}</router-link>
+          </p>
+          <pre :class="pre_class">简介:{{song_sheet.description}}</pre>
+          <Icon :name="icon_name" @click="handleRetract"/>
+        </div>
       </div>
     </div>
     <div class="song_list">
@@ -161,10 +163,12 @@ export default {
 <style lang="scss" scoped >
   @import '@/assets/scss/mixin.scss';
   .song {
-    margin-top: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: end;
+    .top {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
     >img {
       vertical-align: top;
     }

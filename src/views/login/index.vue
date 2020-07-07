@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { remote } from 'electron'
+import { remote, ipcRenderer } from 'electron'
 import { login, logout } from '@/services'
 export default {
   name: 'login',
@@ -35,15 +35,19 @@ export default {
   },
   methods: {
     handleClose: function () {
-      remote.getCurrentWindow().close()
+      remote.getCurrentWindow().hide()
     },
     handleLogin: function () {
       login({
         phone: this.phone,
         password: this.password
       }).then(res => {
-        this.error = res
         this.$store.dispatch('User/set_user', res)
+        ipcRenderer.send('login', {
+          broadcast: 'sync_user',
+          writeFile: 'user',
+          data: res
+        })
         this.handleClose()
       }, res => {
         this.error = res
